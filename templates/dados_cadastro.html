@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <header><a href="/logout">Logout</a></header>
+    <h1>Pet Cadastrado</h1>
+
+<!--mostra os dados que foram recebidos-->
+<p>Nome do pet: {{ nome_pet }}</p>
+<p>Data de nascimento: {{ nascimento }}</p>
+<p>Tutor(a): {{ tutor }}</p>
+<p>Contato: {{ contato }}</p>
+<p>Endereço: {{ endereco }}</p>
+<p>Bairro: {{ bairro }}</p>
+
+<!--link para voltar para pag inicial-->
+<a href="/">Voltar para o início</a>
+</body>
+</html>

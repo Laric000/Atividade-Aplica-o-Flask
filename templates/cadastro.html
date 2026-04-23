@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <h1>Cadastro de Pet</h1>
+
+<!--formulario que vai enviar os dados com POST-->
+<form action="/dados_cadastro" method="POST">
+
+    <label>Nome do pet:</label><br>
+    <input type="text" name="nome_pet"><br><br>
+
+    <label>Data de nascimento:</label><br>
+    <input type="date" name="nascimento"><br><br>
+
+    <label>Nome do tutor(a):</label><br>
+    <input type="text" name="tutor"><br><br>
+
+    <label>Email do tutor(a):</label><br>
+    <input type="text" name="email"><br><br>
+
+    <label>Contato:</label><br>
+    <input type="text" name="contato"><br><br>
+
+    <label>Endereço:</label><br>
+    <input type="text" name="endereco"><br><br>
+
+    <label>Bairro:</label><br>
+    <input type="text" name="bairro"><br><br>
+
+    <button>Cadastrar</button>
+
+</form>
+</body>
+</html>
