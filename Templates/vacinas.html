@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Vacinas</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+
+<h1>Agendamento de Vacina</h1>
+
+<form action="/" method="GET">
+    <label>Vacinas</label><br>
+        <select name="vacinas" id="">
+            <option value="">Selecione uma vacina</option>
+            <option value="f1">Vacina f1</option>
+            <option value="f2">Vacina f2</option>
+            <option value="f3">Vacina f3</option>
+            <option value="f4">Vacina f4</option>
+            <option value="f5">Vacina f5</option>
+        </select>
+</form>
+    <a href="/ficha">Agendar</a>
+</body>
+</html>
