@@ -1,0 +1,154 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #8E4A32;
+    --cor-primaria-hover: rgba(235, 225, 211, 1);
+    --cor-fundo: #f3e9f3;
+    --cor-card: #8e4a32;
+    --cor-texto: #ffffff;
+    --cor-secundaria: #ffffff;
+    --cor-borda: #dbe3ee;
+    --cor-sucesso: #16a34a;
+    --sombra: 0 10px 25px rgba(0, 0, 0, 0.05);
+    --raio: 14px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef4ff, #f8fafc);
+    color: var(--cor-texto);
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+/* Cartão principal */
+body > * {
+    width: 100%;
+    max-width: 520px;
+    background-color: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 32px;
+}
+
+/* Títulos */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--cor-texto);
+}
+
+/* Textos auxiliares */
+p {
+    line-height: 1.6;
+    margin-bottom: 16px;
+    color: var(--cor-secundaria);
+}
+
+/* Links */
+a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.2s ease;
+    margin-top: 10px;
+}
+
+a:hover {
+    color: var(--cor-card);
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-1px);
+}
+
+/* Formulários */
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+/* Campos */
+input,
+select,
+button {
+    text-align: center;
+    font-size: 1rem;
+    padding: 12px 14px;
+    border-radius: 10px;
+}
+
+/* Inputs e selects */
+input,
+select{
+    padding: 12px 14px;
+    border: 1px solid var(--cor-borda);
+    background-color: #f9fbff;
+    color: var(--cor-primaria);
+    outline: none;
+    transition: 0.2s ease;
+}
+
+input:focus,
+select:focus{
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+    background-color: white;
+}
+
+/* Botões */
+button {
+    border: none;
+    background-color: var(--cor-primaria);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-1px);
+}
+
+/* Botão de logout com destaque diferente */
+form button:last-child {
+    background-color: var(--cor-card);
+}
+
+form button:last-child:hover {
+    color: var(--cor-card);
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 600px) {
+    body {
+        padding: 16px;
+    }
+
+    body > * {
+        padding: 24px 20px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+}
