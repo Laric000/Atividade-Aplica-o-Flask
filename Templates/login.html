@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+<!--Fazer a validação dos campos do formulário em JS-->
+<h1>Login</h1>
+
+<form action="/login" method="POST">
+    <label>Email:</label><br>
+    <input type="text" name="email" placeholder="Digite seu email"><br><br>
+
+    <label>Senha:</label><br>
+    <input type="password" name="senha" placeholder="Digite sua senha"><br><br>
+
+    <a href="/inicial">Confirmar</a>
+</form>
+
+</body>
+</html>
