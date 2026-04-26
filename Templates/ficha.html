@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <!-- fazer localstorage em JS para salvar os dados do pet e do serviço agendado, e exibir aqui na ficha -->
+    <h1>Ficha do Pet</h1>
+    <p>
+        Nome do pet: {{ nome_pet }}<br>
+        Data de nascimento: {{ nascimento }}<br>
+        Nome do tutor(a): {{ tutor }}<br>
+        Email do tutor(a): {{ email }}<br>
+        Contato: {{ contato }}<br>
+        Endereço: {{ endereco }}<br>
+        Bairro: {{ bairro }}<br>
+        Serviço agendado: {{ servico }}<br>
+    </p>
+
+    <a href="/inicial">Voltar para a página inicial</a>
+</body>
+</html>
