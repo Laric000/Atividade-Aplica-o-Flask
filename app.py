@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='Templates')
 
 # página inicial
 @app.route('/')
@@ -16,7 +16,7 @@ def inicial():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        return redirect(url_for('index'))
+        return redirect(url_for('inicial'))
     return render_template('login.html')
 
 # logout (melhorar com o javascript)
@@ -25,7 +25,7 @@ def logout():
     return render_template('inicial.html')
 
 # cadastro
-@app.route('/cadastro')
+@app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
         return redirect(url_for('servicos'))

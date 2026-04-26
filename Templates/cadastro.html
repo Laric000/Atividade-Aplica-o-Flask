@@ -7,35 +7,36 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
-<!--Fazer a validação dos campos do formulário em JS-->
-    <h1>Cadastro de Pet</h1>
+    <h1 data-cadastro-titulo>Cadastro de Pet</h1>
 
 <!--formulario que vai enviar os dados com POST-->
-<form action="" method="POST">
+<form action="" method="POST" data-cadastro-form>
+    <input type="hidden" name="id">
 
     <label>Nome do pet:</label><br>
-    <input type="text" name="nome_pet"><br><br>
+    <input type="text" name="nome_pet" required><br><br>
 
     <label>Data de nascimento:</label><br>
-    <input type="date" name="nascimento"><br><br>
+    <input type="date" name="nascimento" required><br><br>
 
     <label>Nome do tutor(a):</label><br>
-    <input type="text" name="tutor"><br><br>
+    <input type="text" name="tutor" required><br><br>
 
     <label>Email do tutor(a):</label><br>
-    <input type="text" name="email"><br><br>
+    <input type="email" name="email" required><br><br>
 
     <label>Contato:</label><br>
-    <input type="text" name="contato"><br><br>
+    <input type="tel" name="contato" required><br><br>
 
     <label>Endereço:</label><br>
-    <input type="text" name="endereco"><br><br>
+    <input type="text" name="endereco" required><br><br>
 
     <label>Bairro:</label><br>
-    <input type="text" name="bairro"><br><br>
+    <input type="text" name="bairro" required><br><br>
 
-    <a href="/servicos">Cadastrar</a>
+    <button type="submit">Salvar cadastro</button>
 
 </form>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>

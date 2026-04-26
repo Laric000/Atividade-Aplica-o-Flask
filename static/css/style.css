@@ -125,17 +125,32 @@ button {
 
 button:hover {
     background-color: var(--cor-primaria-hover);
+    color: var(--cor-card);
     transform: translateY(-1px);
 }
 
-/* Botão de logout com destaque diferente */
-form button:last-child {
-    background-color: var(--cor-card);
+table {
+    border-collapse: collapse;
+    overflow-x: auto;
 }
 
-form button:last-child:hover {
-    color: var(--cor-card);
-    background-color: var(--cor-primaria-hover);
+th,
+td {
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 10px;
+    text-align: left;
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.acoes a,
+.acoes button {
+    margin-top: 0;
+    padding: 8px 10px;
 }
 
 /* Ajuste para telas menores */

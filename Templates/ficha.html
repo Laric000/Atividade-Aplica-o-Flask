@@ -7,19 +7,25 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
-    <!-- fazer localstorage em JS para salvar os dados do pet e do serviço agendado, e exibir aqui na ficha -->
     <h1>Ficha do Pet</h1>
-    <p>
-        Nome do pet: {{ nome_pet }}<br>
-        Data de nascimento: {{ nascimento }}<br>
-        Nome do tutor(a): {{ tutor }}<br>
-        Email do tutor(a): {{ email }}<br>
-        Contato: {{ contato }}<br>
-        Endereço: {{ endereco }}<br>
-        Bairro: {{ bairro }}<br>
-        Serviço agendado: {{ servico }}<br>
-    </p>
+    <p data-ficha-vazio>Nenhum pet cadastrado ainda.</p>
 
+    <table>
+        <thead>
+            <tr>
+                <th>Pet</th>
+                <th>Tutor(a)</th>
+                <th>Email</th>
+                <th>Contato</th>
+                <th>Serviço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody data-ficha-lista></tbody>
+    </table>
+
+    <a href="/cadastro">Novo cadastro</a>
     <a href="/inicial">Voltar para a página inicial</a>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>

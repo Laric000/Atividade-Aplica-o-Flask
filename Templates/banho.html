@@ -8,15 +8,17 @@
 <body>
 
 <h1>Agendamento de Banho</h1>
-<form action="/" method="GET">
+<form action="/ficha" method="GET" data-servico-form>
     <label>Datas e horários disponíveis</label>
     <br>
-    <select name="data">
-        <option>27/04/2026 - 08:00</option>
-        <option>28/04/2026 - 10:00</option>
-        <option>27/04/2026 - 11:00</option>
+    <select name="servico" required>
+        <option value="">Selecione um horário</option>
+        <option value="Banho e Tosa - 27/04/2026 - 08:00">27/04/2026 - 08:00</option>
+        <option value="Banho e Tosa - 28/04/2026 - 10:00">28/04/2026 - 10:00</option>
+        <option value="Banho e Tosa - 27/04/2026 - 11:00">27/04/2026 - 11:00</option>
     </select><br><br>
+    <button type="submit">Agendar</button>
 </form>
-    <a href="/ficha">Agendar</a>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>

@@ -9,17 +9,18 @@
 
 <h1>Agendamento de Vacina</h1>
 
-<form action="/" method="GET">
+<form action="/ficha" method="GET" data-servico-form>
     <label>Vacinas</label><br>
-        <select name="vacinas" id="">
+        <select name="servico" required>
             <option value="">Selecione uma vacina</option>
-            <option value="f1">Vacina f1</option>
-            <option value="f2">Vacina f2</option>
-            <option value="f3">Vacina f3</option>
-            <option value="f4">Vacina f4</option>
-            <option value="f5">Vacina f5</option>
+            <option value="Vacina f1">Vacina f1</option>
+            <option value="Vacina f2">Vacina f2</option>
+            <option value="Vacina f3">Vacina f3</option>
+            <option value="Vacina f4">Vacina f4</option>
+            <option value="Vacina f5">Vacina f5</option>
         </select>
+        <button type="submit">Agendar</button>
 </form>
-    <a href="/ficha">Agendar</a>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
