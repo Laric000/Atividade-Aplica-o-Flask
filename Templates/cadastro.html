@@ -1,42 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<body>
-    <h1 data-cadastro-titulo>Cadastro de Pet</h1>
+{% extends 'base.html' %}
 
-<!--formulario que vai enviar os dados com POST-->
-<form action="" method="POST" data-cadastro-form>
-    <input type="hidden" name="id">
+{% block title %}{% if modo_edicao %}Editar Agendamento{% else %}Novo Agendamento{% endif %}{% endblock %}
 
-    <label>Nome do pet:</label><br>
-    <input type="text" name="nome_pet" required><br><br>
+{% block content %}
+<h1>{% if modo_edicao %}Editar Agendamento{% else %}Cadastro de Pet{% endif %}</h1>
 
-    <label>Data de nascimento:</label><br>
-    <input type="date" name="nascimento" required><br><br>
+<form method="POST">
+    <label for="nome_pet">Nome do pet:</label>
+    <input id="nome_pet" type="text" name="nome_pet" value="{{ agendamento.nome_pet or '' }}" required>
 
-    <label>Nome do tutor(a):</label><br>
-    <input type="text" name="tutor" required><br><br>
+    <label for="nascimento">Data de nascimento:</label>
+    <input id="nascimento" type="date" name="nascimento" value="{{ agendamento.nascimento or '' }}" required>
 
-    <label>Email do tutor(a):</label><br>
-    <input type="email" name="email" required><br><br>
+    <label for="tutor">Nome do tutor(a):</label>
+    <input id="tutor" type="text" name="tutor" value="{{ agendamento.tutor or '' }}" required>
 
-    <label>Contato:</label><br>
-    <input type="tel" name="contato" required><br><br>
+    <label for="email">Email do tutor(a):</label>
+    <input id="email" type="email" name="email" value="{{ agendamento.email or '' }}" required>
 
-    <label>Endereço:</label><br>
-    <input type="text" name="endereco" required><br><br>
+    <label for="contato">Contato:</label>
+    <input id="contato" type="tel" name="contato" value="{{ agendamento.contato or '' }}" required>
 
-    <label>Bairro:</label><br>
-    <input type="text" name="bairro" required><br><br>
+    <label for="endereco">Endereco:</label>
+    <input id="endereco" type="text" name="endereco" value="{{ agendamento.endereco or '' }}" required>
 
-    <button type="submit">Salvar cadastro</button>
+    <label for="bairro">Bairro:</label>
+    <input id="bairro" type="text" name="bairro" value="{{ agendamento.bairro or '' }}" required>
 
+    <label for="servico">Servico:</label>
+    <select id="servico" name="servico" required>
+        <option value="">Selecione</option>
+        <option value="Banho e Tosa" {% if agendamento.servico == 'Banho e Tosa' %}selected{% endif %}>Banho e Tosa</option>
+        <option value="Vacinacao" {% if agendamento.servico == 'Vacinacao' %}selected{% endif %}>Vacinacao</option>
+        <option value="Consulta" {% if agendamento.servico == 'Consulta' %}selected{% endif %}>Consulta</option>
+    </select>
+
+    <button type="submit">{% if modo_edicao %}Salvar alteracoes{% else %}Salvar cadastro{% endif %}</button>
 </form>
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
-</body>
-</html>
+{% endblock %}

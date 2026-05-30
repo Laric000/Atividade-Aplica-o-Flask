@@ -1,31 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<body>
-    <h1>Ficha do Pet</h1>
-    <p data-ficha-vazio>Nenhum pet cadastrado ainda.</p>
+{% extends 'base.html' %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Pet</th>
-                <th>Tutor(a)</th>
-                <th>Email</th>
-                <th>Contato</th>
-                <th>Serviço</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody data-ficha-lista></tbody>
-    </table>
+{% block title %}Agendamentos{% endblock %}
 
-    <a href="/cadastro">Novo cadastro</a>
-    <a href="/inicial">Voltar para a página inicial</a>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-</body>
-</html>
+{% block content %}
+<h1>Agendamentos</h1>
+
+<form method="GET" action="{{ url_for('agendamentos_listar') }}">
+    <label for="servico">Filtrar por servico:</label>
+    <input id="servico" type="text" name="servico" value="{{ filtro_servico or '' }}" placeholder="Banho, Vacinacao...">
+    <button type="submit">Filtrar</button>
+</form>
+
+{% if agendamentos %}
+<table>
+    <thead>
+        <tr>
+            <th>Pet</th>
+            <th>Tutor(a)</th>
+            <th>Email</th>
+            <th>Contato</th>
+            <th>Servico</th>
+            <th>Acoes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cadastro in agendamentos %}
+        <tr>
+            <td>{{ cadastro.nome_pet }}</td>
+            <td>{{ cadastro.tutor }}</td>
+            <td>{{ cadastro.email }}</td>
+            <td>{{ cadastro.contato }}</td>
+            <td>{{ cadastro.servico }}</td>
+            <td class="acoes">
+                <a href="{{ url_for('agendamentos_mostrar', id=cadastro.id) }}">Ver</a>
+                <a href="{{ url_for('agendamentos_editar', id=cadastro.id) }}">Editar</a>
+                <form action="{{ url_for('agendamentos_excluir', id=cadastro.id) }}" method="POST">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Nenhum agendamento encontrado.</p>
+{% endif %}
+
+<a href="{{ url_for('agendamentos_novo') }}">Novo cadastro</a>
+{% endblock %}

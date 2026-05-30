@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Olivia's Pet{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main>
+        <nav class="menu">
+            <a href="{{ url_for('index') }}">Inicio</a>
+            {% if g.usuario %}
+                <a href="{{ url_for('agendamentos_listar') }}">Agendamentos</a>
+                <a href="{{ url_for('agendamentos_novo') }}">Novo Agendamento</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('cadastro_usuario') }}">Cadastro Usuario</a>
+            {% endif %}
+        </nav>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <section>
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </section>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

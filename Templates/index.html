@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Pagina Inicial{% endblock %}
+
+{% block content %}
 <h1>Cadastro de Pets</h1>
-
-<p>Faça o cadastro do seu pet na Olivia´s Pet preenchendo o formulário.</p>
-
-<!--link para pag de cadastro-->
-<a href="/login">Ir para cadastro</a>
-<a href="/login">Fazer o login</a>
-</body>
-</html>
+<p>Gerencie os agendamentos do seu pet em um so lugar.</p>
+{% if g.usuario %}
+    <a href="{{ url_for('agendamentos_listar') }}">Ir para agendamentos</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Fazer login</a>
+    <a href="{{ url_for('cadastro_usuario') }}">Cadastrar usuario</a>
+{% endif %}
+{% endblock %}

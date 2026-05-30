@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhe do Agendamento{% endblock %}
+
+{% block content %}
+<h1>Detalhe do Agendamento</h1>
+
+<p><strong>Pet:</strong> {{ agendamento.nome_pet }}</p>
+<p><strong>Nascimento:</strong> {{ agendamento.nascimento }}</p>
+<p><strong>Tutor(a):</strong> {{ agendamento.tutor }}</p>
+<p><strong>Email:</strong> {{ agendamento.email }}</p>
+<p><strong>Contato:</strong> {{ agendamento.contato }}</p>
+<p><strong>Endereco:</strong> {{ agendamento.endereco }}</p>
+<p><strong>Bairro:</strong> {{ agendamento.bairro }}</p>
+<p><strong>Servico:</strong> {{ agendamento.servico }}</p>
+
+<a href="{{ url_for('agendamentos_editar', id=agendamento.id) }}">Editar</a>
+<a href="{{ url_for('agendamentos_listar') }}">Voltar</a>
+{% endblock %}

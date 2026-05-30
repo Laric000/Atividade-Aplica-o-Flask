@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<body>
-<h1>Serviços</h1>
-<a href="/banho">Banho e Tosa</a>
-<br>
-<a href="/vacinas">Vacinação</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Servicos{% endblock %}
+
+{% block content %}
+<h1>Servicos</h1>
+<p>Escolha um atalho de filtro ou cadastre um novo agendamento.</p>
+<a href="{{ url_for('agendamentos_listar', servico='Banho e Tosa') }}">Ver Banho e Tosa</a>
+<a href="{{ url_for('agendamentos_listar', servico='Vacinacao') }}">Ver Vacinacao</a>
+<a href="{{ url_for('agendamentos_novo') }}">Novo Agendamento</a>
+{% endblock %}
