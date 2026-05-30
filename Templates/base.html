@@ -1,36 +1,47 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Olivia's Pet{% endblock %}</title>
+    <title>{% block title %}Sistema de Agendamentos{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <main>
-        <nav class="menu">
-            <a href="{{ url_for('index') }}">Inicio</a>
-            {% if g.usuario %}
-                <a href="{{ url_for('agendamentos_listar') }}">Agendamentos</a>
-                <a href="{{ url_for('agendamentos_novo') }}">Novo Agendamento</a>
-                <a href="{{ url_for('logout') }}">Logout</a>
-            {% else %}
-                <a href="{{ url_for('login') }}">Login</a>
-                <a href="{{ url_for('cadastro_usuario') }}">Cadastro Usuario</a>
-            {% endif %}
+<header>
+    <div class="container">
+        <h1 class="logo">Sistema de Agendamentos</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                {% if g.usuario %}
+                    <li><a href="{{ url_for('agendamentos_listar') }}">Agendamentos</a></li>
+                    <li><a href="{{ url_for('agendamentos_novo') }}">Novo agendamento</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('cadastro_usuario') }}">Cadastro de usuario</a></li>
+                {% endif %}
+            </ul>
         </nav>
+    </div>
+</header>
 
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <section>
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
-                    {% endfor %}
-                </section>
-            {% endif %}
-        {% endwith %}
+<main class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 - Sistema de Agendamentos</p>
+    </div>
+</footer>
 </body>
 </html>
