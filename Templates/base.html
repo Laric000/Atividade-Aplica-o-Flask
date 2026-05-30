@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1 class="logo">Sistema de Agendamentos</h1>
+
+        <nav>
+            <ul>
+                {% if session.get('usuario_id') %}
+
+                    <li>
+                        <a href="{{ url_for('agendamentos') }}">
+                            Agendamentos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('novo_agendamento') }}">
+                            Novo agendamento
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('logout') }}">
+                            Logout
+                        </a>
+                    </li>
+
+                {% else %}
+
+                    <li>
+                        <a href="{{ url_for('index') }}">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('login') }}">
+                            Login
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('cadastro') }}">
+                            Cadastro de usuário
+                        </a>
+                    </li>
+
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for categoria, mensagem in messages %}
+                <div class="alert {{ categoria }}">
+                    {{ mensagem }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 - Sistema de Agendamentos</p>
+    </div>
+</footer>
+
+</body>
+</html>

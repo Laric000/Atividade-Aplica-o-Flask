@@ -1,42 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<body>
-    <h1 data-cadastro-titulo>Cadastro de Pet</h1>
+{% extends "base.html" %}
 
-<!--formulario que vai enviar os dados com POST-->
-<form action="" method="POST" data-cadastro-form>
-    <input type="hidden" name="id">
+{% block title %}
+Cadastro de usuário
+{% endblock %}
 
-    <label>Nome do pet:</label><br>
-    <input type="text" name="nome_pet" required><br><br>
+{% block content %}
 
-    <label>Data de nascimento:</label><br>
-    <input type="date" name="nascimento" required><br><br>
+<div class="card">
 
-    <label>Nome do tutor(a):</label><br>
-    <input type="text" name="tutor" required><br><br>
+    <h2>Cadastro de usuário</h2>
 
-    <label>Email do tutor(a):</label><br>
-    <input type="email" name="email" required><br><br>
+    <form method="POST">
 
-    <label>Contato:</label><br>
-    <input type="tel" name="contato" required><br><br>
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="nome" required>
+        </div>
 
-    <label>Endereço:</label><br>
-    <input type="text" name="endereco" required><br><br>
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" name="email" required>
+        </div>
 
-    <label>Bairro:</label><br>
-    <input type="text" name="bairro" required><br><br>
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" name="senha" required>
+        </div>
 
-    <button type="submit">Salvar cadastro</button>
+        <button class="btn btn-primary" type="submit">
+            Salvar
+        </button>
 
-</form>
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
-</body>
-</html>
+    </form>
+
+</div>
+
+{% endblock %}

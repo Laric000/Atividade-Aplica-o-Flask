@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+Agendamentos
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>Agendamentos</h2>
+
+    <br>
+
+    <a href="{{ url_for('novo_agendamento') }}"
+       class="btn btn-primary">
+        Novo agendamento
+    </a>
+
+    <br><br>
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% if agendamentos %}
+
+                    {% for agendamento in agendamentos %}
+                    <tr>
+
+                        <td>{{ agendamento.cliente }}</td>
+                        <td>{{ agendamento.data }}</td>
+                        <td>{{ agendamento.horario }}</td>
+
+                        <td>
+
+                            <a href="#"
+                               class="btn btn-warning">
+                                Editar
+                            </a>
+
+                            <a href="#"
+                               class="btn btn-danger">
+                                Excluir
+                            </a>
+
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="4">
+                            Nenhum registro encontrado
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,31 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<body>
-    <h1>Ficha do Pet</h1>
-    <p data-ficha-vazio>Nenhum pet cadastrado ainda.</p>
+{% extends "base.html" %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Pet</th>
-                <th>Tutor(a)</th>
-                <th>Email</th>
-                <th>Contato</th>
-                <th>Serviço</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody data-ficha-lista></tbody>
-    </table>
+{% block title %}
+Ficha
+{% endblock %}
 
-    <a href="/cadastro">Novo cadastro</a>
-    <a href="/inicial">Voltar para a página inicial</a>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-</body>
-</html>
+{% block content %}
+
+<div class="card">
+
+    <h2>Ficha de registros</h2>
+
+    <br>
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% if registros %}
+
+                    {% for registro in registros %}
+                    <tr>
+
+                        <td>{{ registro.id }}</td>
+                        <td>{{ registro.nome }}</td>
+                        <td>{{ registro.telefone }}</td>
+
+                        <td>
+
+                            <a href="#"
+                               class="btn btn-warning">
+                                Editar
+                            </a>
+
+                            <a href="#"
+                               class="btn btn-danger">
+                                Excluir
+                            </a>
+
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+
+                {% else %}
+
+                    <tr>
+                        <td colspan="4">
+                            Nenhum registro encontrado
+                        </td>
+                    </tr>
+
+                {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

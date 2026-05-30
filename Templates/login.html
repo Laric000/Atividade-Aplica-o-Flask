@@ -1,23 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<body>
-<h1>Login</h1>
+{% extends "base.html" %}
 
-<form action="/login" method="POST" data-login-form>
-    <label>Email:</label><br>
-    <input type="email" name="email" placeholder="Digite seu email" required><br><br>
+{% block title %}
+Login
+{% endblock %}
 
-    <label>Senha:</label><br>
-    <input type="password" name="senha" placeholder="Digite sua senha" required><br><br>
+{% block content %}
 
-    <button type="submit">Confirmar</button>
-</form>
+<div class="card">
 
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
-</body>
-</html>
+    <h2>Login</h2>
+
+    <form method="POST">
+
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" name="senha" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Entrar
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
