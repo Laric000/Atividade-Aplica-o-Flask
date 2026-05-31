@@ -13,7 +13,7 @@ cd NOME_DO_PROJETO
 
 python -m venv venv
 
-### Windows:
+### Cmd:
 
 venv\Scripts\activate
 
@@ -27,7 +27,5 @@ python app.py
 
 ### A aplicação estará disponível em:
 
-```text
 http://127.0.0.1:5000
-```
 
