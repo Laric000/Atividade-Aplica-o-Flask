@@ -4,44 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sistema de Agendamentos{% endblock %}</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
 <header>
-    <div class="container">
-        <h1 class="logo">Sistema de Agendamentos</h1>
+    <div class="container navbar">
+
+        <div>
+            <h1 class="logo">Pet Agenda</h1>
+        </div>
+
         <nav>
             <ul>
-                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+
+                <li>
+                    <a href="{{ url_for('index') }}">
+                        Início
+                    </a>
+                </li>
+
                 {% if g.usuario %}
-                    <li><a href="{{ url_for('agendamentos_listar') }}">Agendamentos</a></li>
-                    <li><a href="{{ url_for('agendamentos_novo') }}">Novo agendamento</a></li>
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+
+                    <li>
+                        <a href="{{ url_for('agendamentos_listar') }}">
+                            Agendamentos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('agendamentos_novo') }}">
+                            Novo agendamento
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('logout') }}">
+                            Logout
+                        </a>
+                    </li>
+
                 {% else %}
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                    <li><a href="{{ url_for('cadastro_usuario') }}">Cadastro de usuario</a></li>
+
+                    <li>
+                        <a href="{{ url_for('login') }}">
+                            Login
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('cadastro_usuario') }}">
+                            Cadastro de usuário
+                        </a>
+                    </li>
+
                 {% endif %}
+
             </ul>
         </nav>
+
     </div>
 </header>
 
 <main class="container">
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-                <div class="alert">{{ message }}</div>
+                <div class="alert">
+                    {{ message }}
+                </div>
             {% endfor %}
         {% endif %}
     {% endwith %}
 
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
+
 </main>
 
 <footer>
     <div class="container">
-        <p>&copy; 2026 - Sistema de Agendamentos</p>
+        <p>
+            Sistema de Agendamentos • Flask + SQLite
+        </p>
     </div>
 </footer>
+
 </body>
 </html>

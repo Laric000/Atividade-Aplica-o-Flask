@@ -1,16 +1,39 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %}Cadastro de Usuario{% endblock %}
+{% block title %}Cadastro de usuário{% endblock %}
 
 {% block content %}
-<h1>Cadastrar Usuario</h1>
-<form action="{{ url_for('cadastro_usuario') }}" method="POST">
-    <label for="usuario">Usuario:</label>
-    <input id="usuario" type="text" name="usuario" required>
 
-    <label for="senha">Senha:</label>
-    <input id="senha" type="password" name="senha" required>
+<div class="card">
 
-    <button type="submit">Cadastrar</button>
-</form>
+    <h2>Cadastro de usuário</h2>
+
+    <form action="{{ url_for('cadastro_usuario') }}" method="POST">
+
+        <div class="form-group">
+            <label for="usuario">Usuário</label>
+            <input
+                id="usuario"
+                type="text"
+                name="usuario"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input
+                id="senha"
+                type="password"
+                name="senha"
+                required>
+        </div>
+
+        <button class="btn btn-primary" type="submit">
+            Salvar
+        </button>
+
+    </form>
+
+</div>
+
 {% endblock %}
