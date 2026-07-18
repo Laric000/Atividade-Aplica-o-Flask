@@ -55,4 +55,20 @@
 
     <a class="btn btn-primary" href="{{ url_for('agendamentos_novo') }}">Novo cadastro</a>
 </div>
+
+<style>
+     .table-responsive table tbody tr:hover {
+        background-color: #f8f9fa;
+        transition: background-color 0.2s ease;
+    }
+
+    .acoes {
+        gap: 6px;
+    }
+
+    .acoes .btn {
+        min-width: 70px;
+    }
+</style>
+
 {% endblock %}
