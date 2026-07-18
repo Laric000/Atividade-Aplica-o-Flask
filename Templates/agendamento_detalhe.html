@@ -1,38 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}
-Detalhe do Agendamento
-{% endblock %}
+{% block title %}Detalhe do Agendamento{% endblock %}
 
 {% block content %}
-
-<div class="card">
-
+<div class="card detail-card">
     <h2>Detalhe do agendamento</h2>
 
-    <p><strong>Pet:</strong> {{ agendamento.nome_pet }}</p>
-    <p><strong>Data de nascimento:</strong> {{ agendamento.nascimento }}</p>
-    <p><strong>Tutor(a):</strong> {{ agendamento.tutor }}</p>
-    <p><strong>E-mail:</strong> {{ agendamento.email }}</p>
-    <p><strong>Contato:</strong> {{ agendamento.contato }}</p>
-    <p><strong>Endereço:</strong> {{ agendamento.endereco }}</p>
-    <p><strong>Bairro:</strong> {{ agendamento.bairro }}</p>
+    <p><strong>Pet:</strong> {{ agendamento.pet.nome }}</p>
+    <p><strong>Data de nascimento:</strong> {{ agendamento.pet.nascimento }}</p>
+    <p><strong>Tutor(a):</strong> {{ agendamento.pet.tutor }}</p>
+    <p><strong>E-mail:</strong> {{ agendamento.pet.email }}</p>
+    <p><strong>Contato:</strong> {{ agendamento.pet.contato }}</p>
+    <p><strong>Endereço:</strong> {{ agendamento.pet.endereco }}</p>
+    <p><strong>Bairro:</strong> {{ agendamento.pet.bairro }}</p>
     <p><strong>Serviço:</strong> {{ agendamento.servico }}</p>
 
-    <br>
-
-    <a
-        href="{{ url_for('agendamentos_editar', id=agendamento.id) }}"
-        class="btn btn-warning">
-        Editar
-    </a>
-
-    <a
-        href="{{ url_for('agendamentos_listar') }}"
-        class="btn btn-secondary">
-        Cancelar
-    </a>
-
+    <div class="top-space">
+        <a href="{{ url_for('agendamentos_editar', id=agendamento.id) }}" class="btn btn-warning">Editar</a>
+        <a href="{{ url_for('agendamentos_listar') }}" class="btn btn-secondary">Voltar</a>
+    </div>
 </div>
-
 {% endblock %}
